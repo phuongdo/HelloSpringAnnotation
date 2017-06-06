@@ -28,7 +28,7 @@ public class MqttConsumerLWM implements MqttCallback {
 
     public void subscribe()throws Exception{
         // Creating a MQTT Client using Eclipse Paho
-        String topic = "die";
+        String topic = "gone";
         int qos = 0;
         String broker = "tcp://0.0.0.0:1883";
         String clientId = "paho-java-client-consumer";

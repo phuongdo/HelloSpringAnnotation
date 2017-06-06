@@ -25,7 +25,7 @@ public class MqttPublisher {
             MqttClient sampleClient = new MqttClient(broker, clientId, new MemoryPersistence());
             MqttConnectOptions connOpts = new MqttConnectOptions();
             connOpts.setCleanSession(true);
-//            connOpts.setWill("die", "i'm die".getBytes(), 2, false);
+            connOpts.setWill("gone", "i'm die".getBytes(), 2, false);
             System.out.println("paho-client connecting to broker: " + broker);
             sampleClient.connect(connOpts);
             System.out.println("paho-client connected to broker");
@@ -36,11 +36,11 @@ public class MqttPublisher {
 //            message.setRetained(true);
 
 
-//            while (true) {
-            sampleClient.publish(topic, message);
-            System.out.println("paho-client message published");
-            Thread.sleep(2000);
-//            }
+            while (true) {
+                sampleClient.publish(topic, message);
+                System.out.println("paho-client message published");
+                Thread.sleep(2000);
+            }
 //            sampleClient.disconnect();
 //            System.out.println("paho-client disconnected");
         } catch (MqttException me) {
