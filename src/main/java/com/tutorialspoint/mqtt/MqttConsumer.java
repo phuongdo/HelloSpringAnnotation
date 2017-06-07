@@ -28,7 +28,7 @@ public class MqttConsumer implements MqttCallback {
 
     public void subscribe()throws Exception{
         // Creating a MQTT Client using Eclipse Paho
-        String topic = "gone-offline";
+        String topic = "news";
         int qos = 0;
         String broker = "tcp://0.0.0.0:1883";
         String clientId = "paho-java-client-consumer-123";
@@ -36,11 +36,12 @@ public class MqttConsumer implements MqttCallback {
         MqttClient sampleClient = new MqttClient(broker, clientId, new MemoryPersistence());
         sampleClient.setCallback(this);
         MqttConnectOptions connOpts = new MqttConnectOptions();
-        connOpts.setCleanSession(true);
+        connOpts.setCleanSession(false);
         System.out.println("paho-client connecting to broker: " + broker);
         sampleClient.connect(connOpts);
 
         sampleClient.subscribe(topic, qos);
+
       //  Thread.sleep(5000);
     }
 
